@@ -3,6 +3,7 @@ import './globals.css'
 import './responsive.css'
 
 export const metadata: Metadata = {
+  icons: { icon: '/favicon.svg' },
   title: 'PipeBorn — We Build Growth Systems For B2B Tech',
   description:
     'Connect with the right clients predictably and consistently — without expensive SDRs, unreliable referrals, or hit-and-miss agencies — powered by systems that keep your pipeline full.',

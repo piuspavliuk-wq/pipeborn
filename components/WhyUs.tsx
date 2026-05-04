@@ -137,7 +137,7 @@ export default function WhyUs() {
           transition={{ duration: 0.5, delay: 0.3 }}
           style={{ display: 'flex', justifyContent: 'center', marginTop: 48 }}
         >
-          <GlowButton href="#contact" label="Get Ideal Clients" variant="dark" />
+          <GlowButton href="https://calendly.com/alex-meetpius/30min" label="Get Ideal Clients" variant="dark" />
         </motion.div>
       </div>
     </section>

@@ -67,7 +67,7 @@ export default function FooterSection() {
               }}>
                 PipeBorn is an AI-driven growth optimization agency that uses cutting-edge tech to scale your B2B company.
               </p>
-              <GlowButton href="#contact" label="Book A Call" variant="accent" />
+              <GlowButton href="https://calendly.com/alex-meetpius/30min" label="Book A Call" variant="accent" />
             </div>
           </motion.div>
         </div>
@@ -116,7 +116,7 @@ export default function FooterSection() {
                 Contact
               </p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-                {[["Let's Talk", '#contact'], ['Book A Call', '#contact'], ['contact@pipeborn.com', 'mailto:contact@pipeborn.com']].map(([l, h]) => (
+                {[["Let's Talk", 'https://calendly.com/alex-meetpius/30min'], ['Book A Call', 'https://calendly.com/alex-meetpius/30min'], ['alex@pipeborn.com', 'mailto:alex@pipeborn.com'], ['+447575447291', 'tel:+447575447291']].map(([l, h]) => (
                   <a key={l} href={h} style={{ fontFamily: 'Manrope, sans-serif', fontSize: 13, color: '#555',
                     transition: 'color 0.2s' }}
                     onMouseEnter={e => (e.currentTarget.style.color = '#afafaf')}
@@ -138,9 +138,18 @@ export default function FooterSection() {
           <p style={{ fontFamily: 'Manrope, sans-serif', fontSize: 12, color: '#3d3d3d' }}>
             Copyright PipeBorn. All right reserved.
           </p>
-          <p style={{ fontFamily: 'Manrope, sans-serif', fontSize: 12, color: '#3d3d3d' }}>
-            contact@pipeborn.com
-          </p>
+          <div style={{ display: 'flex', gap: 20 }}>
+            <a href="mailto:alex@pipeborn.com" style={{ fontFamily: 'Manrope, sans-serif', fontSize: 12, color: '#3d3d3d', transition: 'color 0.2s' }}
+              onMouseEnter={e => (e.currentTarget.style.color = '#555')}
+              onMouseLeave={e => (e.currentTarget.style.color = '#3d3d3d')}>
+              alex@pipeborn.com
+            </a>
+            <a href="tel:+447575447291" style={{ fontFamily: 'Manrope, sans-serif', fontSize: 12, color: '#3d3d3d', transition: 'color 0.2s' }}
+              onMouseEnter={e => (e.currentTarget.style.color = '#555')}
+              onMouseLeave={e => (e.currentTarget.style.color = '#3d3d3d')}>
+              +447575447291
+            </a>
+          </div>
         </div>
       </div>
     </footer>

@@ -46,7 +46,7 @@ export default function Mission() {
           transition={{ duration: 0.5, delay: 0.4 }}
           style={{ display: 'flex', justifyContent: 'center' }}
         >
-          <GlowButton href="#contact" label="Book A Call" variant="accent" />
+          <GlowButton href="https://calendly.com/alex-meetpius/30min" label="Book A Call" variant="accent" />
         </motion.div>
       </div>
     </section>

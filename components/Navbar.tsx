@@ -91,7 +91,7 @@ export default function Navbar() {
           </div>
 
           {/* CTA */}
-          <GlowButton href="#contact" label="Let's Talk" variant="dark" />
+          <GlowButton href="https://calendly.com/alex-meetpius/30min" label="Let's Talk" variant="dark" />
         </nav>
       </div>
     </motion.header>

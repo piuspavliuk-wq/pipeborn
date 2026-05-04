@@ -87,7 +87,7 @@ export default function Hero() {
           style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 16, flexWrap: 'wrap' }}
         >
           <GlowButton href="#services" label="Discover the System" variant="dark" />
-          <GlowButton href="#contact" label="Book A Call" variant="accent" />
+          <GlowButton href="https://calendly.com/alex-meetpius/30min" label="Book A Call" variant="accent" />
         </motion.div>
 
         {/* Scroll indicator */}

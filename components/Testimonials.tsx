@@ -1,35 +1,60 @@
 'use client'
 import { motion } from 'framer-motion'
 import SectionBadge from './ui/SectionBadge'
+import GlowButton from './ui/GlowButton'
 
-const Stars = () => (
-  <div style={{ display: 'flex', gap: 3 }}>
-    {[...Array(5)].map((_, i) => (
-      <svg key={i} width="16" height="16" viewBox="0 0 16 16" fill="#2563EB">
-        <path d="M8 1.3l1.76 3.57 3.94.57-2.85 2.78.67 3.92L8 10.17 4.48 12.1l.67-3.92L2.3 5.4l3.94-.57L8 1.3z"/>
+const stats = [
+  { val: '15+',    label: 'Qualified calls\nbooked per month' },
+  { val: '60d',    label: 'Average time to\nfull pipeline' },
+  { val: '4.2%',   label: 'Average cold email\nreply rate' },
+  { val: '$8.5K+', label: 'Monthly savings vs\nhiring an SDR' },
+]
+
+const outcomes = [
+  {
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/>
       </svg>
-    ))}
-  </div>
-)
-
-const Avatar = ({ initials, grad }: { initials: string; grad: string }) => (
-  <div style={{
-    width: 40, height: 40, borderRadius: '50%', background: grad,
-    display: 'flex', alignItems: 'center', justifyContent: 'center',
-    fontFamily: 'Manrope, sans-serif', fontWeight: 700, fontSize: 13, color: '#fff', flexShrink: 0,
-  }}>{initials}</div>
-)
-
-const cards = [
-  { quote: '"Transformed our lead generation completely. The quality of meetings was exceptional."', name: 'Sarah Johnson', title: 'CEO, Helpcare AI', initials: 'SJ', grad: 'linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%)' },
-  { quote: '"We achieved +$85K in additional revenue in just one quarter with their systematic approach."', name: 'Michael Chen', title: 'Founder, Vention', initials: 'MC', grad: 'linear-gradient(135deg, #2563eb 0%, #60a5fa 100%)' },
-  { quote: '"The targeting is unlike anything we\'d tried before. They find prospects who actually need our solution right now."', name: 'Laura M.', title: 'CRO, PrimaCove', initials: 'LM', grad: 'linear-gradient(135deg, #0ea5e9 0%, #3b82f6 100%)' },
+    ),
+    title: 'Zero domain burnouts',
+    body: 'Proper SPF, DKIM, DMARC and inbox warm-up from day one — your emails land in primary, not spam.',
+  },
+  {
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/>
+      </svg>
+    ),
+    title: 'First replies within 2 weeks',
+    body: 'We move fast. Most clients see their first positive replies and booked calls within 2–3 weeks of launch.',
+  },
+  {
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+      </svg>
+    ),
+    title: 'You just take the calls',
+    body: 'We handle everything — lists, infra, copy, campaigns, optimisation. Your only job is showing up to the meeting.',
+  },
+  {
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M3 3v18h18"/><path d="M7 16l4-6 4 4 4-8"/>
+      </svg>
+    ),
+    title: 'Weekly reporting',
+    body: 'Full transparency — open rates, reply rates, calls booked, and what we\'re testing next. No black boxes.',
+  },
 ]
 
 export default function Testimonials() {
   return (
     <section className="r-section" style={{ padding: '100px 0', background: '#080808' }}>
       <div className="section-container">
+
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -37,112 +62,139 @@ export default function Testimonials() {
           transition={{ duration: 0.6 }}
           style={{ textAlign: 'center', marginBottom: 64 }}
         >
-          <SectionBadge label="Faster results. Done-For-You." />
-          <h2 style={{
-            fontFamily: 'Satoshi, sans-serif',
-            fontSize: 'clamp(24px, 4vw, 38px)',
-            fontWeight: 500, letterSpacing: '-0.025em',
-            color: '#fff', marginTop: 20, lineHeight: 1.2, textTransform: 'capitalize',
-          }}>
-            Our system helped businesses<br />like yours.
+          <SectionBadge label="What You Can Expect" />
+          <h2 style={{ fontFamily: 'Satoshi, sans-serif', fontSize: 'clamp(26px, 4vw, 44px)', fontWeight: 500, letterSpacing: '-0.03em', color: '#fff', marginTop: 20, lineHeight: 1.2 }}>
+            Outbound That Pays For Itself.
           </h2>
+          <p style={{ fontFamily: 'Manrope, sans-serif', fontSize: 'clamp(14px, 2vw, 16px)', color: '#afafaf', marginTop: 14, lineHeight: 1.65, maxWidth: 480, margin: '14px auto 0' }}>
+            Numbers based on real campaigns we've run. Not promises — benchmarks.
+          </p>
         </motion.div>
 
-        {/* Featured */}
+        {/* Stats row */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.65 }}
+          transition={{ duration: 0.6 }}
           style={{ background: 'linear-gradient(180deg, #1e1e1e 0%, #111 100%)', borderRadius: 20, padding: 1, marginBottom: 24 }}
         >
-          <div
-            className="r-featured-inner"
-            style={{
-              background: 'radial-gradient(50% 60% at 50% 0%, #161616 0%, #0d0d0d 100%)',
-              borderRadius: 19, padding: '48px 48px',
-              display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 56, alignItems: 'center',
-            }}
-          >
-            <div>
-              <p style={{ fontFamily: 'Manrope, sans-serif', fontSize: 13, color: '#919191', marginBottom: 8 }}>Overview</p>
-              <h3 style={{
-                fontFamily: 'Manrope, sans-serif',
-                fontSize: 'clamp(18px, 2.5vw, 28px)',
-                fontWeight: 500, letterSpacing: '-0.02em',
-                color: '#dedede', lineHeight: 1.4,
-              }}>
-                Our system helped FabuLingua add 5 new clients in under 48 Days— fast traction in a competitive market.
-              </h3>
-              <div style={{ display: 'flex', gap: 40, marginTop: 32, flexWrap: 'wrap' }}>
-                <div>
-                  <p style={{ fontFamily: 'Satoshi, sans-serif', fontSize: 'clamp(32px, 5vw, 40px)', fontWeight: 700, color: '#2563EB', letterSpacing: '-0.03em' }}>32%</p>
-                  <p style={{ fontFamily: 'Manrope, sans-serif', fontSize: 13, color: '#919191', marginTop: 4 }}>Sales increase in first month.</p>
+          <div style={{ background: 'radial-gradient(50% 80% at 50% 0%, #161616 0%, #0d0d0d 100%)', borderRadius: 19, padding: '40px 48px' }}>
+            <div className="r-grid-2col" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 0 }}>
+              {stats.map((s, i) => (
+                <motion.div
+                  key={s.val}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  style={{
+                    textAlign: 'center',
+                    padding: '24px 20px',
+                    borderRight: i < stats.length - 1 ? '1px solid #1e1e1e' : 'none',
+                  }}
+                >
+                  <p style={{ fontFamily: 'Satoshi, sans-serif', fontSize: 'clamp(32px, 4vw, 48px)', fontWeight: 700, letterSpacing: '-0.04em', color: i % 2 === 0 ? '#2563EB' : '#fff', lineHeight: 1 }}>
+                    {s.val}
+                  </p>
+                  <p style={{ fontFamily: 'Manrope, sans-serif', fontSize: 13, color: '#555', marginTop: 10, lineHeight: 1.5, whiteSpace: 'pre-line' }}>
+                    {s.label}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Instantly proof screenshot */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.65 }}
+          style={{ marginBottom: 24 }}
+        >
+          <div style={{ background: 'linear-gradient(180deg, #1e1e1e 0%, #111 100%)', borderRadius: 20, padding: 1 }}>
+            <div style={{ background: '#0d0d0d', borderRadius: 19, padding: '24px 24px 16px' }}>
+              {/* Header bar */}
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                  <div style={{ display: 'flex', gap: 5 }}>
+                    {['#ff5f57','#febc2e','#28c840'].map(c => (
+                      <div key={c} style={{ width: 9, height: 9, borderRadius: '50%', background: c }} />
+                    ))}
+                  </div>
+                  <span style={{ fontFamily: 'Manrope, sans-serif', fontSize: 12, color: '#3d3d3d', marginLeft: 6 }}>
+                    Instantly — Live Campaign Analytics
+                  </span>
                 </div>
-                <div>
-                  <p style={{ fontFamily: 'Satoshi, sans-serif', fontSize: 'clamp(32px, 5vw, 40px)', fontWeight: 700, color: '#fff', letterSpacing: '-0.03em' }}>5×</p>
-                  <p style={{ fontFamily: 'Manrope, sans-serif', fontSize: 13, color: '#919191', marginTop: 4 }}>Pipeline results. Zero ad spend.</p>
+                <div style={{ display: 'flex', gap: 8 }}>
+                  {[
+                    { val: '11.6K', label: 'Sequences' },
+                    { val: '4.43%', label: 'Reply rate' },
+                    { val: '$2.3M', label: 'Pipeline' },
+                  ].map(s => (
+                    <div key={s.label} style={{ background: 'rgba(37,99,235,0.08)', border: '1px solid rgba(37,99,235,0.15)', borderRadius: 8, padding: '4px 12px', textAlign: 'center' }}>
+                      <span style={{ fontFamily: 'Satoshi, sans-serif', fontSize: 13, fontWeight: 700, color: '#2563EB' }}>{s.val}</span>
+                      <span style={{ fontFamily: 'Manrope, sans-serif', fontSize: 11, color: '#555', marginLeft: 5 }}>{s.label}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
-            </div>
-            <div>
-              <Stars />
-              <p style={{ fontFamily: 'Manrope, sans-serif', fontSize: 'clamp(14px, 2vw, 17px)', color: '#ccc', lineHeight: 1.7, marginTop: 16, marginBottom: 24 }}>
-                "Transformed our lead generation completely. The quality of meetings was exceptional — every conversation felt targeted and relevant."
-              </p>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                <Avatar initials="SJ" grad="linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%)" />
-                <div>
-                  <p style={{ fontFamily: 'Manrope, sans-serif', fontSize: 14, fontWeight: 600, color: '#fff' }}>Sarah Johnson</p>
-                  <p style={{ fontFamily: 'Manrope, sans-serif', fontSize: 13, color: '#919191', marginTop: 2 }}>CEO, Helpcare AI</p>
-                </div>
+              {/* Screenshot */}
+              <div style={{ borderRadius: 12, overflow: 'hidden', border: '1px solid #1a1a1a' }}>
+                <img
+                  src="/instantly.png"
+                  alt="Instantly campaign analytics — real results"
+                  style={{ width: '100%', display: 'block', borderRadius: 12 }}
+                />
               </div>
             </div>
           </div>
         </motion.div>
 
-        {/* Logos */}
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 'clamp(20px, 4vw, 40px)', marginBottom: 32, flexWrap: 'wrap' }}
-        >
-          {['FabuLingua', 'CreativeEdge', 'PrimaCove', 'Helpcare AI', 'Vention'].map(name => (
-            <span key={name} style={{ fontFamily: 'Satoshi, sans-serif', fontWeight: 700, fontSize: 'clamp(12px, 2vw, 15px)', color: '#3d3d3d', letterSpacing: '-0.02em', transition: 'color 0.2s' }}
-              onMouseEnter={e => (e.currentTarget.style.color = '#919191')}
-              onMouseLeave={e => (e.currentTarget.style.color = '#3d3d3d')}>
-              {name}
-            </span>
-          ))}
-        </motion.div>
-
-        {/* Cards — 3-col → 1-col on mobile */}
-        <div className="r-grid-3col" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}>
-          {cards.map((c, i) => (
+        {/* Outcomes grid */}
+        <div className="r-grid-2col" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 48 }}>
+          {outcomes.map((o, i) => (
             <motion.div
-              key={c.name}
-              initial={{ opacity: 0, y: 40 }}
+              key={o.title}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.55, delay: i * 0.1 }}
-              style={{ background: 'linear-gradient(180deg, #1e1e1e 0%, #111 100%)', borderRadius: 20, padding: 1 }}
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+              style={{ background: 'linear-gradient(180deg, #141414 0%, #0d0d0d 100%)', border: '1px solid #1a1a1a', borderRadius: 16, padding: '28px 28px' }}
             >
-              <div style={{ background: '#0d0d0d', borderRadius: 19, padding: '28px 28px', display: 'flex', flexDirection: 'column', gap: 16, height: '100%' }}>
-                <Stars />
-                <p style={{ fontFamily: 'Manrope, sans-serif', fontSize: 15, color: '#ccc', lineHeight: 1.7, flex: 1 }}>{c.quote}</p>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                  <Avatar initials={c.initials} grad={c.grad} />
-                  <div>
-                    <p style={{ fontFamily: 'Manrope, sans-serif', fontSize: 14, fontWeight: 600, color: '#fff' }}>{c.name}</p>
-                    <p style={{ fontFamily: 'Manrope, sans-serif', fontSize: 13, color: '#919191', marginTop: 2 }}>{c.title}</p>
-                  </div>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: 16 }}>
+                <div style={{ width: 40, height: 40, borderRadius: 10, background: 'rgba(37,99,235,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  {o.icon}
+                </div>
+                <div>
+                  <h4 style={{ fontFamily: 'Satoshi, sans-serif', fontSize: 16, fontWeight: 500, color: '#fff', marginBottom: 8, letterSpacing: '-0.02em' }}>
+                    {o.title}
+                  </h4>
+                  <p style={{ fontFamily: 'Manrope, sans-serif', fontSize: 14, color: '#919191', lineHeight: 1.65 }}>
+                    {o.body}
+                  </p>
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
+
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          style={{ textAlign: 'center' }}
+        >
+          <p style={{ fontFamily: 'Manrope, sans-serif', fontSize: 14, color: '#555', marginBottom: 20 }}>
+            Be among the first to see these results in your pipeline.
+          </p>
+          <GlowButton label="Book A Free Strategy Call" icon="calendar" variant="accent" />
+        </motion.div>
+
       </div>
     </section>
   )
