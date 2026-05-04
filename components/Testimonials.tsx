@@ -79,8 +79,8 @@ export default function Testimonials() {
           transition={{ duration: 0.6 }}
           style={{ background: 'linear-gradient(180deg, #1e1e1e 0%, #111 100%)', borderRadius: 20, padding: 1, marginBottom: 24 }}
         >
-          <div style={{ background: 'radial-gradient(50% 80% at 50% 0%, #161616 0%, #0d0d0d 100%)', borderRadius: 19, padding: '40px 48px' }}>
-            <div className="r-grid-2col" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 0 }}>
+          <div style={{ background: 'radial-gradient(50% 80% at 50% 0%, #161616 0%, #0d0d0d 100%)', borderRadius: 19, padding: 'clamp(20px, 4vw, 40px) clamp(16px, 4vw, 48px)' }}>
+            <div className="r-stats-4col" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 0 }}>
               {stats.map((s, i) => (
                 <motion.div
                   key={s.val}
@@ -117,18 +117,18 @@ export default function Testimonials() {
           <div style={{ background: 'linear-gradient(180deg, #1e1e1e 0%, #111 100%)', borderRadius: 20, padding: 1 }}>
             <div style={{ background: '#0d0d0d', borderRadius: 19, padding: '24px 24px 16px' }}>
               {/* Header bar */}
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
+              <div className="r-instantly-header" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                   <div style={{ display: 'flex', gap: 5 }}>
                     {['#ff5f57','#febc2e','#28c840'].map(c => (
                       <div key={c} style={{ width: 9, height: 9, borderRadius: '50%', background: c }} />
                     ))}
                   </div>
-                  <span style={{ fontFamily: 'Manrope, sans-serif', fontSize: 12, color: '#3d3d3d', marginLeft: 6 }}>
+                  <span className="r-instantly-title" style={{ fontFamily: 'Manrope, sans-serif', fontSize: 12, color: '#3d3d3d', marginLeft: 6 }}>
                     Instantly — Live Campaign Analytics
                   </span>
                 </div>
-                <div style={{ display: 'flex', gap: 8 }}>
+                <div className="r-instantly-badges" style={{ display: 'flex', gap: 8 }}>
                   {[
                     { val: '11.6K', label: 'Sequences' },
                     { val: '4.43%', label: 'Reply rate' },

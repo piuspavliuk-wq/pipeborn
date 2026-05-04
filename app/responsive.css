@@ -110,6 +110,33 @@
     display: none !important;
   }
 
+  /* ── Stats 4-col → 2x2 ── */
+  .r-stats-4col {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  .r-stats-4col > *:nth-child(odd) {
+    border-right: 1px solid #1e1e1e !important;
+  }
+  .r-stats-4col > *:nth-child(1),
+  .r-stats-4col > *:nth-child(2) {
+    border-bottom: 1px solid #1e1e1e !important;
+  }
+  .r-stats-4col > * {
+    padding: 20px 12px !important;
+  }
+
+  /* ── Instantly header ── */
+  .r-instantly-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+  }
+  .r-instantly-title { display: none !important; }
+  .r-instantly-badges {
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+  }
+
   /* ── Sections padding ── */
   .r-section { padding: 64px 0 !important; }
 
